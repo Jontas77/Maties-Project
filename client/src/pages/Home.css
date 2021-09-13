@@ -1,11 +1,39 @@
+.header {
+	display: flex;
+	justify-content: space-around;
+	padding: 1rem;
+}
+
+#register {
+	margin-right: 1rem;
+	padding: 0.25rem 0.5rem;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+#login {
+	padding: 0.25rem 0.5rem;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
 .logo {
-	width: 100px;
+	width: 200px;
 }
 
 .message {
-	color: blue;
+	color: #551b33;
 }
 
 .message:hover {
-	background-color: yellow;
+	background-color: #551b33;
+	color: #fff;
+}
+
+.intro {
+	margin-top: 4rem;
+}
+
+.register-link {
+	margin-top: 4rem;
 }

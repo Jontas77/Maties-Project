@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 import "./Home.css";
-import logo from "./logo.svg";
+import logo from "./stellenbosch-university-logo.png";
+
+import LoginMenu from "../components/LoginMenu";
 
 export function Home() {
 	const [message, setMessage] = useState("Loading...");
@@ -23,20 +24,31 @@ export function Home() {
 			});
 	}, []);
 
+
 	return (
 		<main role="main">
-			<div>
-				<img
-					className="logo"
-					data-qa="logo"
-					src={logo}
-					alt="Just the React logo"
-				/>
+			<div className="header">
+				<div className="logo">
+					<img
+						className="logo"
+						data-qa="logo"
+						src={logo}
+						alt="Just the React logo"
+					/>
+				</div>
+				<LoginMenu />
+			</div>
+			<center>
 				<h1 className="message" data-qa="message">
 					{message}
 				</h1>
-				<Link to="/about/this/site">About</Link>
-			</div>
+				<h2 className="intro">Introduction</h2>
+				<p>
+					Welcome to a place where you can post your project ideas and where you
+					can access it all in one place
+				</p>
+				<h4 className="register-link">Please Log in to continue</h4>
+			</center>
 		</main>
 	);
 }
