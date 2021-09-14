@@ -8,13 +8,13 @@ import {
 
 
 import Home from "./pages/Home";
-import StudentLogin from "./pages/StudentLogin";
-import MentorLogin from "./pages/MentorLogin";
-import AdminLogin from "./pages/AdminLogin";
+import StudentLogin from "./pages/login/StudentLogin";
+import MentorLogin from "./pages/login/MentorLogin";
+import AdminLogin from "./pages/login/AdminLogin";
 
-import StudentDashboard from "./dashboard/StudentDashboard";
-import MentorDashboard from "./dashboard/MentorDashboard";
-import AdminDashboard from "./dashboard/AdminDashboard";
+import StudentDashboard from "./pages/dashboards/StudentDashboard";
+import MentorDashboard from "./pages/dashboards/MentorDashboard";
+import AdminDashboard from "./pages/dashboards/AdminDashboard";
 
 const App = () => {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
