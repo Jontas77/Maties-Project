@@ -3,6 +3,8 @@ import morgan from "morgan";
 import path from "path";
 
 import router from "./api";
+import authRoutes from "./authentication/routes";
+
 import {
 	configuredHelmet,
 	httpsOnly,
@@ -11,6 +13,7 @@ import {
 } from "./middleware";
 
 const apiRoot = "/api";
+const authRoot = "/auth";
 const staticDir = path.join(__dirname, "static");
 
 const app = express();
@@ -25,6 +28,7 @@ if (app.get("env") === "production") {
 }
 
 app.use(apiRoot, router);
+app.use(authRoot, authRoutes);
 
 app.use(express.static(staticDir));
 app.use(pushStateRouting(apiRoot, staticDir));
