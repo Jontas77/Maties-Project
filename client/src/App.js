@@ -6,12 +6,18 @@ import {
 	Redirect,
 } from "react-router-dom";
 
-
 import Home from "./pages/Home";
+// Register
+import StudentRegister from "./pages/register/StudentRegister";
+import MentorRegister from "./pages/register/MentorRegister";
+import AdminRegister from "./pages/register/AdminRegister";
+
+// Log in
 import StudentLogin from "./pages/login/StudentLogin";
 import MentorLogin from "./pages/login/MentorLogin";
 import AdminLogin from "./pages/login/AdminLogin";
 
+// Dashboards
 import StudentDashboard from "./pages/dashboards/StudentDashboard";
 import MentorDashboard from "./pages/dashboards/MentorDashboard";
 import AdminDashboard from "./pages/dashboards/AdminDashboard";
@@ -28,14 +34,37 @@ const App = () => {
 			<Router>
 				<div className="container">
 					<Switch>
+						<Route exact path="/" render={(props) => <Home {...props} />} />
 						<Route
 							exact
-							path="/"
+							path="/student/register"
 							render={(props) =>
 								!isAuthenticated ? (
-									<Home {...props} />
+									<StudentRegister {...props} setAuth={setAuth} />
 								) : (
-									<Redirect to="/dashboard" />
+									<Redirect to="/student/login" />
+								)
+							}
+						/>
+						<Route
+							exact
+							path="/mentor/register"
+							render={(props) =>
+								!isAuthenticated ? (
+									<MentorRegister {...props} setAuth={setAuth} />
+								) : (
+									<Redirect to="/mentor/login" />
+								)
+							}
+						/>
+						<Route
+							exact
+							path="/admin/register"
+							render={(props) =>
+								!isAuthenticated ? (
+									<AdminRegister {...props} setAuth={setAuth} />
+								) : (
+									<Redirect to="/admin/login" />
 								)
 							}
 						/>
@@ -113,4 +142,3 @@ const App = () => {
 };
 
 export default App;
-

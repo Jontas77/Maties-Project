@@ -4,6 +4,7 @@ import "./Home.css";
 import logo from "./stellenbosch-university-logo.png";
 
 import LoginMenu from "../components/LoginMenu";
+import RegisterMenu from "../components/RegisterMenu";
 
 export function Home() {
 	const [message, setMessage] = useState("Loading...");
@@ -36,6 +37,7 @@ export function Home() {
 						alt="Just the React logo"
 					/>
 				</div>
+				<RegisterMenu />
 				<LoginMenu />
 			</div>
 			<center>

@@ -5,7 +5,7 @@ const AdminDashboard = ({ setAuth }) => {
 		<div>
 			<h1>WELCOME ADMIN</h1>
 			<h2>DASHBOARD</h2>
-			<button onClick={() => setAuth(false)}>Log out</button>
+			<button className="btn btn-primary" onClick={() => setAuth(false)}>Log out</button>
 		</div>
 	);
 };

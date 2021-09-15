@@ -1,35 +1,34 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const StudentLogin = ({ setAuth }) => {
+const AdminRegister = ({ setAuth }) => {
 	const [inputs, setInputs] = useState({
+        name: "",
 		email: "",
 		password: "",
 	});
 
-	const { email, password } = inputs;
+	const { name, email, password } = inputs;
 
 	const onChange = (e) => {
-		setInputs((input) => {
-			return { ...input, [e.target.name]: e.target.value };
-		});
+		setInputs({ ...inputs, [e.target.name]: e.target.value });
 	};
 
 	const onSubmitForm = async (e) => {
 		e.preventDefault();
 
 		try {
-			const body = inputs;
+			const body = { name, email, password };
 
-			const response = await fetch("/auth/student/login", {
+			const response = await fetch("/auth/admin/register", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(body),
 			});
 
 			const parseRes = await response.json();
-			localStorage.setItem("token", parseRes.token);
-
+			// localStorage.setItem("token", parseRes.token);
+console.log(parseRes);
 			setAuth(true);
 		} catch (error) {
 			console.error(error.message);
@@ -42,8 +41,16 @@ const StudentLogin = ({ setAuth }) => {
 				<button className="btn btn-primary">Home</button>
 			</Link>
 			<div>
-				<h1 className="text-center my-5">STUDENT LOGIN</h1>
+				<h1 className="text-center my-5">Register as Admin</h1>
 				<form onSubmit={onSubmitForm}>
+                <input
+						type="text"
+						name="name"
+						placeholder="Name"
+						className="form-control my-3"
+						value={name}
+						onChange={(e) => onChange(e)}
+					/>
 					<input
 						type="email"
 						name="email"
@@ -61,12 +68,14 @@ const StudentLogin = ({ setAuth }) => {
 						onChange={(e) => onChange(e)}
 					/>
 					<button type="button" className="btn btn-success btn-block">
-						Log in
+						Register
 					</button>
 				</form>
+                <Link to="/admin/login">Already have an account? Log in</Link>
 			</div>
 		</>
 	);
 };
 
-export default StudentLogin;
+export default AdminRegister;
+

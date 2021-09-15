@@ -24,7 +24,7 @@ const registerMentor = async (req, res) => {
     ]);
 
     // Generate jwt token
-    const token = jwtGenerator(newMentor.rows[0].user_id);
+    const token = jwtGenerator(newMentor.rows[0].mentor_id);
 
     res.json({ token });
   } catch (error) {

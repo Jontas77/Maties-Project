@@ -24,7 +24,7 @@ const registerAdmin = async (req, res) => {
     ]);
 
     // Generate jwt token
-    const token = jwtGenerator(newAdmin.rows[0].user_id);
+    const token = jwtGenerator(newAdmin.rows[0].admin_id);
 
     res.json({ token });
   } catch (error) {
