@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import logo from "../../pages/stellenbosch-university-logo.png";
 
 const StudentRegister = ({ setAuth }) => {
 	const [inputs, setInputs] = useState({
-        name: "",
+		name: "",
 		email: "",
 		password: "",
 	});
@@ -27,8 +28,9 @@ const StudentRegister = ({ setAuth }) => {
 			});
 
 			const parseRes = await response.json();
-			// localStorage.setItem("token", parseRes.token);
-console.log(parseRes);
+
+			localStorage.setItem("token", parseRes.token);
+
 			setAuth(true);
 		} catch (error) {
 			console.error(error.message);
@@ -38,12 +40,17 @@ console.log(parseRes);
 	return (
 		<>
 			<Link to="/">
-				<button className="btn btn-primary">Home</button>
+				<img
+					className="logo"
+					data-qa="logo"
+					src={logo}
+					alt="Stellenbosch logo"
+				/>
 			</Link>
 			<div>
 				<h1 className="text-center my-5">Register as Student</h1>
 				<form onSubmit={onSubmitForm}>
-                <input
+					<input
 						type="text"
 						name="name"
 						placeholder="Name"
@@ -71,12 +78,10 @@ console.log(parseRes);
 						Register
 					</button>
 				</form>
-                <Link to="/student/login">Already have an account? Log in</Link>
+				<Link to="/student/login">Already have an account? Log in</Link>
 			</div>
 		</>
 	);
 };
 
 export default StudentRegister;
-
-

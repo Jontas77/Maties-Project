@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import logo from "../../pages/stellenbosch-university-logo.png";
 
 const AdminLogin = ({ setAuth }) => {
 	const [inputs, setInputs] = useState({
@@ -39,7 +40,12 @@ const AdminLogin = ({ setAuth }) => {
 	return (
 		<>
 			<Link to="/">
-				<button className="btn btn-primary">Home</button>
+			<img
+					className="logo"
+					data-qa="logo"
+					src={logo}
+					alt="Stellenbosch logo"
+				/>
 			</Link>
 			<div>
 				<h1 className="text-center my-5">STUDENT LOGIN</h1>

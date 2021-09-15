@@ -1,10 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../../pages/stellenbosch-university-logo.png";
 
 const MentorLogin = ({ setAuth }) => {
 	return (
 		<>
-			<Link to="/"><button className="btn btn-primary">Home</button></Link>
+			<Link to="/">
+				<img
+					className="logo"
+					data-qa="logo"
+					src={logo}
+					alt="Stellenbosch logo"
+				/>
+				</Link>
 			<div>
 				<h1 className="text-center my-5">MENTOR LOGIN</h1>
 				<form>
