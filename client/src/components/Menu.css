@@ -19,7 +19,7 @@
     align-items: center;
     justify-content: center;
 
-    font-size: 1.5em;
+    font-size: 1.2em;
     color: #EDFFEC;
     cursor: pointer;
 
@@ -35,14 +35,14 @@
 }
 
 .open-1{
-    top: 1.8em;
+    top: 2.2em;
     background-color: #9b5de5;
 }
 .open-2{
-    top: 3.6em;
+    top: 4.4em;
     background-color: #f15bb5;
 }
 .open-3{
-    top: 5.4em;
+    top: 6.6em;
     background-color: #00BBF9;
 }

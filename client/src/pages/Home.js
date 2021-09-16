@@ -25,7 +25,6 @@ export function Home() {
 			});
 	}, []);
 
-
 	return (
 		<main role="main">
 			<div className="header">
@@ -37,8 +36,10 @@ export function Home() {
 						alt="Just the React logo"
 					/>
 				</div>
-				<RegisterMenu />
-				<LoginMenu />
+				<div className="menu">
+					<RegisterMenu />
+					<LoginMenu />
+				</div>
 			</div>
 			<center>
 				<h1 className="message" data-qa="message">

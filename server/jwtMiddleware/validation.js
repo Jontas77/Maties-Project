@@ -1,8 +1,8 @@
 /* eslint-disable no-useless-escape */
 module.exports = function (req, res, next) {
 	const {
-		student_email,
 		student_name,
+		student_email,
 		student_password,
 		mentor_name,
 		mentor_email,
@@ -17,7 +17,7 @@ module.exports = function (req, res, next) {
 	}
 
 	if (req.path === "/student/register") {
-		if (![student_email, student_name, student_password].every(Boolean)) {
+		if (![student_name, student_email, student_password].every(Boolean)) {
 			return res.status(401).json("Missing Credentials");
 		} else if (!validEmail(student_email)) {
 			return res.status(401).json("Invalid Email");

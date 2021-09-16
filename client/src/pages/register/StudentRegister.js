@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../pages/stellenbosch-university-logo.png";
 
-const StudentRegister = () => {
+const StudentRegister = ({ setAuth }) => {
 	const [inputs, setInputs] = useState({
 		name: "",
 		email: "",
@@ -19,19 +19,18 @@ const StudentRegister = () => {
 		e.preventDefault();
 
 		try {
-			const body = inputs;
-			console.log(inputs);
-			const response = await fetch("http://localhost:3100/auth/student/register", {
+			const body = { name, email, password };
+
+			const response = await fetch("/auth/student/register", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(body),
 			});
-
 			const parseRes = await response.json();
+			console.log(parseRes);
+			localStorage.setItem("token", parseRes.token);
 
-			// localStorage.setItem("token", parseRes.token);
-console.log(parseRes);
-			// setAuth(true);
+			setAuth(true);
 		} catch (error) {
 			console.error(error.message);
 		}
