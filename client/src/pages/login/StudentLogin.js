@@ -29,6 +29,7 @@ const StudentLogin = ({ setAuth }) => {
 			});
 
 			const parseRes = await response.json();
+
 			localStorage.setItem("token", parseRes.token);
 
 			setAuth(true);
@@ -40,7 +41,7 @@ const StudentLogin = ({ setAuth }) => {
 	return (
 		<>
 			<Link to="/">
-			<img
+				<img
 					className="logo"
 					data-qa="logo"
 					src={logo}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../pages/stellenbosch-university-logo.png";
 
-const StudentRegister = ({ setAuth }) => {
+const StudentRegister = () => {
 	const [inputs, setInputs] = useState({
 		name: "",
 		email: "",
@@ -19,9 +19,9 @@ const StudentRegister = ({ setAuth }) => {
 		e.preventDefault();
 
 		try {
-			const body = { name, email, password };
-
-			const response = await fetch("/auth/student/register", {
+			const body = inputs;
+			console.log(inputs);
+			const response = await fetch("http://localhost:3100/auth/student/register", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(body),
@@ -29,9 +29,9 @@ const StudentRegister = ({ setAuth }) => {
 
 			const parseRes = await response.json();
 
-			localStorage.setItem("token", parseRes.token);
-
-			setAuth(true);
+			// localStorage.setItem("token", parseRes.token);
+console.log(parseRes);
+			// setAuth(true);
 		} catch (error) {
 			console.error(error.message);
 		}
@@ -74,7 +74,7 @@ const StudentRegister = ({ setAuth }) => {
 						value={password}
 						onChange={(e) => onChange(e)}
 					/>
-					<button type="button" className="btn btn-success btn-block">
+					<button type="submit" className="btn btn-success btn-block">
 						Register
 					</button>
 				</form>

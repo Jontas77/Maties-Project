@@ -44,7 +44,7 @@ const loginMentor = async (req, res) => {
 
     const validPassword = await bcrypt.compare(
         mentor_password,
-      mentor.rows[0].user_password
+      mentor.rows[0].mentor_password
     );
 
     if (!validPassword) {

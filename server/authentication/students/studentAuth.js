@@ -48,7 +48,7 @@ const loginStudent = async (req, res) => {
 
 		const validPassword = await bcrypt.compare(
 			student_password,
-			student.rows[0].user_password
+			student.rows[0].student_password
 		);
 
 		if (!validPassword) {

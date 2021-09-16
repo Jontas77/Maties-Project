@@ -44,7 +44,7 @@ const loginAdmin = async (req, res) => {
 
     const validPassword = await bcrypt.compare(
         admin_password,
-      admin.rows[0].user_password
+      admin.rows[0].admin_password
     );
 
     if (!validPassword) {
