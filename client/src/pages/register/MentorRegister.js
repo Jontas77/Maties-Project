@@ -4,12 +4,12 @@ import logo from "../../pages/stellenbosch-university-logo.png";
 
 const MentorRegister = ({ setAuth }) => {
 	const [inputs, setInputs] = useState({
-        name: "",
-		email: "",
-		password: "",
+        mentor_name: "",
+		mentor_email: "",
+		mentor_password: "",
 	});
 
-	const { name, email, password } = inputs;
+	const { mentor_name, mentor_email, mentor_password } = inputs;
 
 	const onChange = (e) => {
 		setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -19,7 +19,7 @@ const MentorRegister = ({ setAuth }) => {
 		e.preventDefault();
 
 		try {
-			const body = { name, email, password };
+			const body = { mentor_name, mentor_email, mentor_password };
 
 			const response = await fetch("/auth/mentor/register", {
 				method: "POST",
@@ -28,8 +28,9 @@ const MentorRegister = ({ setAuth }) => {
 			});
 
 			const parseRes = await response.json();
-			// localStorage.setItem("token", parseRes.token);
-console.log(parseRes);
+
+			localStorage.setItem("token", parseRes.token);
+
 			setAuth(true);
 		} catch (error) {
 			console.error(error.message);
@@ -51,18 +52,18 @@ console.log(parseRes);
 				<form onSubmit={onSubmitForm}>
                 <input
 						type="text"
-						name="name"
+						name="mentor_name"
 						placeholder="Name"
 						className="form-control my-3"
-						value={name}
+						value={mentor_name}
 						onChange={(e) => onChange(e)}
 					/>
 					<input
 						type="email"
-						name="email"
+						name="mentor_email"
 						placeholder="Email"
 						className="form-control my-3"
-						value={email}
+						value={mentor_email}
 						onChange={(e) => onChange(e)}
 					/>
 					<input
@@ -70,10 +71,10 @@ console.log(parseRes);
 						name="password"
 						placeholder="Password"
 						className="form-control my-3"
-						value={password}
+						value={mentor_password}
 						onChange={(e) => onChange(e)}
 					/>
-					<button type="button" className="btn btn-success btn-block">
+					<button type="submit" className="btn btn-success btn-block">
 						Register
 					</button>
 				</form>

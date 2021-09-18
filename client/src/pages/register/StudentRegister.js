@@ -4,12 +4,12 @@ import logo from "../../pages/stellenbosch-university-logo.png";
 
 const StudentRegister = ({ setAuth }) => {
 	const [inputs, setInputs] = useState({
-		name: "",
-		email: "",
-		password: "",
+		student_name: "",
+		student_email: "",
+		student_password: "",
 	});
 
-	const { name, email, password } = inputs;
+	const { student_name, student_email, student_password } = inputs;
 
 	const onChange = (e) => {
 		setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -19,7 +19,7 @@ const StudentRegister = ({ setAuth }) => {
 		e.preventDefault();
 
 		try {
-			const body = { name, email, password };
+			const body = { student_name, student_email, student_password };
 
 			const response = await fetch("/auth/student/register", {
 				method: "POST",
@@ -51,26 +51,26 @@ const StudentRegister = ({ setAuth }) => {
 				<form onSubmit={onSubmitForm}>
 					<input
 						type="text"
-						name="name"
+						name="student_name"
 						placeholder="Name"
 						className="form-control my-3"
-						value={name}
+						value={student_name}
 						onChange={(e) => onChange(e)}
 					/>
 					<input
 						type="email"
-						name="email"
+						name="student_email"
 						placeholder="Email"
 						className="form-control my-3"
-						value={email}
+						value={student_email}
 						onChange={(e) => onChange(e)}
 					/>
 					<input
 						type="password"
-						name="password"
+						name="student_password"
 						placeholder="Password"
 						className="form-control my-3"
-						value={password}
+						value={student_password}
 						onChange={(e) => onChange(e)}
 					/>
 					<button type="submit" className="btn btn-success btn-block">

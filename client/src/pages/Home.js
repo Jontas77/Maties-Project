@@ -36,10 +36,9 @@ export function Home() {
 						alt="Just the React logo"
 					/>
 				</div>
-				<div className="menu">
-					<RegisterMenu />
-					<LoginMenu />
-				</div>
+
+				<RegisterMenu />
+				<LoginMenu />
 			</div>
 			<center>
 				<h1 className="message" data-qa="message">

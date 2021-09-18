@@ -4,11 +4,11 @@ import logo from "../../pages/stellenbosch-university-logo.png";
 
 const StudentLogin = ({ setAuth }) => {
 	const [inputs, setInputs] = useState({
-		email: "",
-		password: "",
+		student_email: "",
+		student_password: "",
 	});
 
-	const { email, password } = inputs;
+	const { student_email, student_password } = inputs;
 
 	const onChange = (e) => {
 		setInputs((input) => {
@@ -20,7 +20,7 @@ const StudentLogin = ({ setAuth }) => {
 		e.preventDefault();
 
 		try {
-			const body = inputs;
+			const body = { student_email, student_password };
 
 			const response = await fetch("/auth/student/login", {
 				method: "POST",
@@ -53,21 +53,21 @@ const StudentLogin = ({ setAuth }) => {
 				<form onSubmit={onSubmitForm}>
 					<input
 						type="email"
-						name="email"
+						name="student_email"
 						placeholder="Email"
 						className="form-control my-3"
-						value={email}
+						value={student_email}
 						onChange={(e) => onChange(e)}
 					/>
 					<input
 						type="password"
-						name="password"
+						name="student_password"
 						placeholder="Password"
 						className="form-control my-3"
-						value={password}
+						value={student_password}
 						onChange={(e) => onChange(e)}
 					/>
-					<button type="button" className="btn btn-success btn-block">
+					<button type="submit" className="btn btn-success btn-block">
 						Log in
 					</button>
 				</form>

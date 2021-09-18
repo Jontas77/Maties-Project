@@ -4,11 +4,11 @@ import logo from "../../pages/stellenbosch-university-logo.png";
 
 const AdminLogin = ({ setAuth }) => {
 	const [inputs, setInputs] = useState({
-		email: "",
-		password: "",
+		admin_email: "",
+		admin_password: "",
 	});
 
-	const { email, password } = inputs;
+	const { admin_email, admin_password } = inputs;
 
 	const onChange = (e) => {
 		setInputs((input) => {
@@ -20,7 +20,7 @@ const AdminLogin = ({ setAuth }) => {
 		e.preventDefault();
 
 		try {
-			const body = inputs;
+			const body = { admin_email, admin_password };
 
 			const response = await fetch("/auth/admin/login", {
 				method: "POST",
@@ -29,6 +29,7 @@ const AdminLogin = ({ setAuth }) => {
 			});
 
 			const parseRes = await response.json();
+
 			localStorage.setItem("token", parseRes.token);
 
 			setAuth(true);
@@ -40,7 +41,7 @@ const AdminLogin = ({ setAuth }) => {
 	return (
 		<>
 			<Link to="/">
-			<img
+				<img
 					className="logo"
 					data-qa="logo"
 					src={logo}
@@ -48,25 +49,25 @@ const AdminLogin = ({ setAuth }) => {
 				/>
 			</Link>
 			<div>
-				<h1 className="text-center my-5">STUDENT LOGIN</h1>
+				<h1 className="text-center my-5">ADMIN LOGIN</h1>
 				<form onSubmit={onSubmitForm}>
 					<input
 						type="email"
-						name="email"
+						name="admin_email"
 						placeholder="Email"
 						className="form-control my-3"
-						value={email}
+						value={admin_email}
 						onChange={(e) => onChange(e)}
 					/>
 					<input
 						type="password"
-						name="password"
+						name="admin_password"
 						placeholder="Password"
 						className="form-control my-3"
-						value={password}
+						value={admin_password}
 						onChange={(e) => onChange(e)}
 					/>
-					<button type="button" className="btn btn-success btn-block">
+					<button type="submit" className="btn btn-success btn-block">
 						Log in
 					</button>
 				</form>
