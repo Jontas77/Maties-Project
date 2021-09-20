@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../pages/stellenbosch-university-logo.png";
+import { toast } from "react-toastify";
 
 const AdminLogin = ({ setAuth }) => {
 	const [inputs, setInputs] = useState({
@@ -33,7 +34,13 @@ const AdminLogin = ({ setAuth }) => {
 			localStorage.setItem("token", parseRes.token);
 
 			if (parseRes.token) {
+				localStorage.setItem("token", parseRes.token);
 				setAuth(true);
+
+				toast.success("Logged in successfully!");
+			} else {
+				setAuth(false);
+				toast.error(parseRes);
 			}
 		} catch (error) {
 			console.error(error.message);

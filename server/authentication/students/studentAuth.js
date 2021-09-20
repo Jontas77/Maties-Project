@@ -11,7 +11,7 @@ const registerStudent = async (req, res) => {
 			student_email,
 		]);
 		if (student.rows.length > 0) {
-			return res.status(401).send("Student already exists!");
+			return res.status(401).json("Student already exists!");
 		}
 
 		const saltRound = 10;
@@ -31,7 +31,7 @@ const registerStudent = async (req, res) => {
 		res.json({ token });
 	} catch (error) {
 		console.error(error.message);
-		res.status(500).send("Server Error");
+		res.status(500).json("Server Error");
 	}
 };
 
@@ -43,7 +43,7 @@ const loginStudent = async (req, res) => {
 			student_email,
 		]);
 		if (student.rows.length === 0) {
-			return res.status(401).send("Password or Email incorrect");
+			return res.status(401).json("Password or Email incorrect");
 		}
 
 		const validPassword = await bcrypt.compare(
@@ -52,7 +52,7 @@ const loginStudent = async (req, res) => {
 		);
 
 		if (!validPassword) {
-			return res.status(401).send("Password or Email incorrect");
+			return res.status(401).json("Password or Email incorrect");
 		}
 
 		const token = jwtGenerator(student.rows[0].student_id);
@@ -69,7 +69,7 @@ const verifyStudent = async (req, res) => {
 		res.json(true);
 	} catch (error) {
 		console.error(error.message);
-		res.status(500).send("Server Error");
+		res.status(500).json("Server Error");
 	}
 };
 
