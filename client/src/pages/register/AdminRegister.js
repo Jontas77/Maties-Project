@@ -4,12 +4,12 @@ import logo from "../../pages/stellenbosch-university-logo.png";
 
 const AdminRegister = ({ setAuth }) => {
 	const [inputs, setInputs] = useState({
-        name: "",
-		email: "",
-		password: "",
+        admin_name: "",
+		admin_email: "",
+		admin_password: "",
 	});
 
-	const { name, email, password } = inputs;
+	const { admin_name, admin_email, admin_password } = inputs;
 
 	const onChange = (e) => {
 		setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -19,7 +19,7 @@ const AdminRegister = ({ setAuth }) => {
 		e.preventDefault();
 
 		try {
-			const body = { name, email, password };
+			const body = { admin_name, admin_email, admin_password };
 
 			const response = await fetch("/auth/admin/register", {
 				method: "POST",
@@ -28,9 +28,12 @@ const AdminRegister = ({ setAuth }) => {
 			});
 
 			const parseRes = await response.json();
-			// localStorage.setItem("token", parseRes.token);
-console.log(parseRes);
-			setAuth(true);
+			console.log(parseRes);
+			localStorage.setItem("token", parseRes.token);
+
+			if (parseRes.token) {
+				setAuth(true);
+			}
 		} catch (error) {
 			console.error(error.message);
 		}
@@ -51,29 +54,29 @@ console.log(parseRes);
 				<form onSubmit={onSubmitForm}>
                 <input
 						type="text"
-						name="name"
+						name="admin_name"
 						placeholder="Name"
 						className="form-control my-3"
-						value={name}
+						value={admin_name}
 						onChange={(e) => onChange(e)}
 					/>
 					<input
 						type="email"
-						name="email"
+						name="admin_email"
 						placeholder="Email"
 						className="form-control my-3"
-						value={email}
+						value={admin_email}
 						onChange={(e) => onChange(e)}
 					/>
 					<input
 						type="password"
-						name="password"
+						name="admin_password"
 						placeholder="Password"
 						className="form-control my-3"
-						value={password}
+						value={admin_password}
 						onChange={(e) => onChange(e)}
 					/>
-					<button type="button" className="btn btn-success btn-block">
+					<button type="submit" className="btn btn-success btn-block">
 						Register
 					</button>
 				</form>

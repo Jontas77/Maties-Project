@@ -32,7 +32,9 @@ const MentorLogin = ({ setAuth }) => {
 
 			localStorage.setItem("token", parseRes.token);
 
-			setAuth(true);
+			if (parseRes.token) {
+				setAuth(true);
+			}
 		} catch (error) {
 			console.error(error.message);
 		}

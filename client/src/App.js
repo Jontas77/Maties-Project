@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
 	BrowserRouter as Router,
 	Route,
 	Switch,
 	Redirect,
 } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import Home from "./pages/Home";
 // Register
@@ -22,12 +24,33 @@ import StudentDashboard from "./pages/dashboards/StudentDashboard";
 import MentorDashboard from "./pages/dashboards/MentorDashboard";
 import AdminDashboard from "./pages/dashboards/AdminDashboard";
 
+toast.configure();
+
 const App = () => {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
 
 	const setAuth = (boolean) => {
 		setIsAuthenticated(boolean);
 	};
+
+	const isAuth = async () => {
+		try {
+			const response = await fetch("/auth/student/is-verify", {
+				method: "GET",
+				headers: { token: localStorage.token },
+			});
+
+			const parseRes = await response.json();
+
+			parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
+		} catch (error) {
+			console.error(error.message);
+		}
+	};
+
+	useEffect(() => {
+		isAuth();
+	}, []);
 
 	return (
 		<>

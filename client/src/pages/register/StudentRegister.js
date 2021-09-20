@@ -27,10 +27,12 @@ const StudentRegister = ({ setAuth }) => {
 				body: JSON.stringify(body),
 			});
 			const parseRes = await response.json();
-			console.log(parseRes);
+
 			localStorage.setItem("token", parseRes.token);
 
+			if (parseRes.token) {
 			setAuth(true);
+			}
 		} catch (error) {
 			console.error(error.message);
 		}
