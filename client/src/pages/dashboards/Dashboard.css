@@ -1,0 +1,28 @@
+.header-container {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.logo {
+	width: 200px;
+}
+
+.profile {
+	margin-right: 1rem;
+	border-radius: 2rem;
+	width: 100px;
+}
+
+.logout {
+	border-radius: 2rem;
+	width: 100px;
+}
+
+.display {
+	margin-top: 5rem;
+	text-align: center;
+	border: 1px solid;
+	border-radius: 1rem;
+	min-height: 100px;
+}
