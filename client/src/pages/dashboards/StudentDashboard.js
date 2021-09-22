@@ -3,8 +3,12 @@ import logo from "../stellenbosch-university-logo.png";
 import { toast } from "react-toastify";
 import "./Dashboard.css";
 
+import Projects from "./dashComponents/Projects";
+
 const StudentDashboard = ({ setAuth }) => {
 	const [name, setName] = useState("");
+	const [message, setMessage] = useState("--Nothing to Display--");
+	const [page, setPage] = useState("");
 
 	const getName = async () => {
 		try {
@@ -34,25 +38,36 @@ const StudentDashboard = ({ setAuth }) => {
 	};
 
 	return (
-		<div className="container">
+		<div className="container container-fluid">
 			<div className="header-container">
 				<div className="logo">
 					<img src={logo} className="logo" alt="Stellies Logo" />
 				</div>
-				<div className="introduction">
-					<h1>Welcome {name}</h1>
-					<h2> Student Dashboard</h2>
-				</div>
-				<div>
-					<button className="btn btn-primary profile">Profile</button>
-					<button className="btn btn-primary logout" onClick={(e) => logout(e)}>
+
+				<div className="nav-links">
+					<button className="btn profile-btn">Profile</button>
+					<button className="btn logout-btn" onClick={(e) => logout(e)}>
 						Logout
 					</button>
 				</div>
 			</div>
-			<div className="display">
-				--Nothing to Display--
+			<div className="introduction">
+				<h1>Student Dashboard</h1>
+				<h4>Welcome {name}</h4>
 			</div>
+			{page === "projects" ?
+			(<Projects setPage={setPage} />) : (
+				<>
+			<div className="display">{message}</div>
+			<div className="links-wrapper">
+				<div className="links">
+					<button className="btn message-btn">Messages</button>
+					<button className="btn projects-btn" onClick={() => setPage("projects")}>Projects</button>
+					<button className="btn competitions-btn">Competitions</button>
+				</div>
+			</div>
+			</>
+			)}
 		</div>
 	);
 };
