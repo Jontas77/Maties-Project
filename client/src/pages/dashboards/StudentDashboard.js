@@ -45,7 +45,7 @@ const StudentDashboard = ({ setAuth }) => {
 				</div>
 
 				<div className="nav-links">
-					<button className="btn profile-btn">Profile</button>
+
 					<button className="btn logout-btn" onClick={(e) => logout(e)}>
 						Logout
 					</button>
@@ -61,7 +61,7 @@ const StudentDashboard = ({ setAuth }) => {
 			<div className="display">{message}</div>
 			<div className="links-wrapper">
 				<div className="links">
-					<button className="btn message-btn">Messages</button>
+					<button className="btn profile-btn">Profile</button>
 					<button className="btn projects-btn" onClick={() => setPage("projects")}>Projects</button>
 					<button className="btn competitions-btn">Competitions</button>
 				</div>

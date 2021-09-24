@@ -1,14 +1,35 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AddProject from "./AddProject";
 
 const Projects = ({ setPage }) => {
 	const [project, setProject] = useState(false);
+	const [projects, setProjects] = useState([]);
 
 	const handleClick = () => {
 		setProject(true);
 	};
+
+	const getProjects = async () => {
+		try {
+			const response = await fetch("/api/student/projects", {
+				method: "GET",
+				headers: { token: localStorage.token },
+			});
+
+			const parseResponse = await response.json();
+
+			setProjects(parseResponse);
+		} catch (error) {
+			console.error(error.message);
+		}
+	};
+
+	useEffect(() => {
+		getProjects();
+	}, []);
+
 
 	return (
 		<>
@@ -27,7 +48,15 @@ const Projects = ({ setPage }) => {
 					</div>
 				</div>
 				<div className="projects-main">
-					{project === true ? <AddProject /> : <h1>Please add new Project!</h1>}
+					{projects === "" ? <h3>--No projects to display--</h3> : projects.map((proj, idx) => {
+						return (
+							<ul key={idx}>
+								<li style={{ listStyle: "none", textAlign: "center" }}><h2>{proj.project_name}</h2></li>
+								<li style={{ listStyle: "none" }}>{proj.project_desc}</li>
+							</ul>
+						);
+					})}
+					{project && <AddProject />}
 				</div>
 			</div>
 		</>
