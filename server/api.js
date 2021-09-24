@@ -8,6 +8,7 @@ router.get("/", (_, res) => {
 	res.json({ message: "Welcome to Stellenbosch University" });
 });
 
+// Projects routes
 router.post("/student/projects", authorization, async (req, res) => {
 	const { project_name, project_desc } = req.body;
 	try {
@@ -33,14 +34,16 @@ router.get("/student/projects", authorization, async (req, res) => {
 	}
 });
 
-router.get("/projects", authorization, async (req, res) => {
+//Profile routes
+router.post("/student/profile", authorization, async (req, res) => {
+	const { name, email, phone, bio, profile_pic } = req.body;
+	console.log(req.user, name, email, phone, bio, profile_pic);
 	try {
-		const { project_id } = req.body;
-		const results = await pool.query(
-			"SELECT project_name, project_desc FROM projects WHERE project_id = $1 AND student_id = $2",
-			[project_id, req.user]
+		const result = await pool.query(
+			"INSERT INTO profile (student_id, name, email, phone, bio, profile_pic) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
+			[req.user, name, email, phone, bio, profile_pic]
 		);
-		res.json(results.rows);
+		res.json(result.rows);
 	} catch (error) {
 		console.error(error.message);
 	}

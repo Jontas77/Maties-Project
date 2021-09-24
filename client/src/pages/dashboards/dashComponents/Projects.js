@@ -30,7 +30,6 @@ const Projects = ({ setPage }) => {
 		getProjects();
 	}, []);
 
-
 	return (
 		<>
 			<div className="project-container">
@@ -48,15 +47,22 @@ const Projects = ({ setPage }) => {
 					</div>
 				</div>
 				<div className="projects-main">
-					{projects === "" ? <h3>--No projects to display--</h3> : projects.map((proj, idx) => {
-						return (
-							<ul key={idx}>
-								<li style={{ listStyle: "none", textAlign: "center" }}><h2>{proj.project_name}</h2></li>
-								<li style={{ listStyle: "none" }}>{proj.project_desc}</li>
-							</ul>
-						);
-					})}
-					{project && <AddProject />}
+					{project === true ? (
+						<AddProject />
+					) : (
+						projects.map((proj, idx) => {
+							return proj === "" ? (
+								<h3>--No projects to display--</h3>
+							) : (
+								<ul key={idx}>
+									<li style={{ listStyle: "none", textAlign: "center" }}>
+										<h2>{proj.project_name}</h2>
+									</li>
+									<li style={{ listStyle: "none" }}>{proj.project_desc}</li>
+								</ul>
+							);
+						})
+					)}
 				</div>
 			</div>
 		</>

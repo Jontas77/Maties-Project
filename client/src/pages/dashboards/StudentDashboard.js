@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import logo from "../stellenbosch-university-logo.png";
+import HeaderDash from "./dashComponents/HeaderDash";
 import { toast } from "react-toastify";
 import "./Dashboard.css";
 
@@ -38,19 +38,9 @@ const StudentDashboard = ({ setAuth }) => {
 	};
 
 	return (
+		<>
+		<HeaderDash logout={logout} />
 		<div className="container container-fluid">
-			<div className="header-container">
-				<div className="logo">
-					<img src={logo} className="logo" alt="Stellies Logo" />
-				</div>
-
-				<div className="nav-links">
-
-					<button className="btn logout-btn" onClick={(e) => logout(e)}>
-						Logout
-					</button>
-				</div>
-			</div>
 			<div className="introduction">
 				<h1>Student Dashboard</h1>
 				<h4>Welcome {name}</h4>
@@ -69,6 +59,7 @@ const StudentDashboard = ({ setAuth }) => {
 			</>
 			)}
 		</div>
+		</>
 	);
 };
 
