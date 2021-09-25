@@ -7,7 +7,7 @@ import Projects from "./dashComponents/Projects";
 
 const StudentDashboard = ({ setAuth }) => {
 	const [name, setName] = useState("");
-	const [message, setMessage] = useState("--Nothing to Display--");
+	const [message, setMessage] = useState("--No Feedback to Display--");
 	const [page, setPage] = useState("");
 
 	const getName = async () => {
