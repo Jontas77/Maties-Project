@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import "./Home.css";
-import logo from "./stellenbosch-university-logo.png";
+import HomeLogo from "../images/home_logo.jpg";
 
 import LoginMenu from "../components/LoginMenu";
 import RegisterMenu from "../components/RegisterMenu";
@@ -32,7 +32,7 @@ export function Home() {
 					<img
 						className="logo"
 						data-qa="logo"
-						src={logo}
+						src={HomeLogo}
 						alt="Just the React logo"
 					/>
 				</div>

@@ -1,14 +1,9 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from "react";
+import React from "react";
 import AddProject from "./AddProject";
 
-const Projects = ({ setPage }) => {
-	const [project, setProject] = useState(false);
-
-	const handleClick = () => {
-		setProject(true);
-	};
+const Projects = ({ setPage, project }) => {
 
 	return (
 		<>
@@ -21,7 +16,7 @@ const Projects = ({ setPage }) => {
 						</i>
 					</div>
 					<div className="new-project">
-						<i className="fas fa-plus" onClick={handleClick}>
+						<i className="fas fa-plus">
 							{"  "}Add Project
 						</i>
 					</div>

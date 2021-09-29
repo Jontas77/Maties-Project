@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../pages/stellenbosch-university-logo.png";
+import logo from "../../images/home_logo.jpg";
 
 const StudentRegister = ({ setAuth }) => {
 	const [inputs, setInputs] = useState({

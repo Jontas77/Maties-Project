@@ -1,3 +1,8 @@
+.container {
+	max-width: 1440px;
+	overflow-x: hidden;
+}
+
 .header-container {
 	display: flex;
 	justify-content: space-between;
@@ -5,7 +10,7 @@
 }
 
 .logo {
-	width: 200px;
+	width: 70px;
 }
 
 .profile-btn {
@@ -51,6 +56,20 @@
 	border-radius: 2rem;
 	font-weight: 600;
 	width: 100px;
+}
+
+.logout {
+	height: 40px;
+	width: 90px;
+	border-radius: 8px;
+	background-color: #fff;
+	color: #551b33;
+}
+
+.navbar {
+	background-color: #551b33;
+	display: flex;
+	justify-content: space-between;
 }
 
 .message-btn,
