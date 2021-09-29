@@ -1,6 +1,10 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect } from "react";
 import HeaderDashboard from "./dashComponents/HeaderDashboard";
 import SideNav from "./dashComponents/SideNav";
+import "./Dashboard.css";
+
 import Projects from "./dashComponents/Projects";
 import Profile from "./dashComponents/Profile";
 import Competitions from "./dashComponents/Competitions";
@@ -8,6 +12,7 @@ import { Col, Row } from "reactstrap";
 
 const StudentDashboard = ({ setAuth }) => {
 	const [name, setName] = useState("");
+	// const [message, setMessage] = useState("");
 	const [page, setPage] = useState("");
 	const [project, setProject] = useState(false);
 
